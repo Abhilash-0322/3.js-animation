@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three.js Car Movement</title>
+    <style>
+        body { margin: 0; }
+    </style>
+</head>
+<body>
+    <script src="https://threejs.org/build/three.js"></script>
+
+    <script>
+        // Set up Three.js
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Create a simple car
+        const carGeometry = new THREE.BoxGeometry(2, 1, 1);
+        const carMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const car = new THREE.Mesh(carGeometry, carMaterial);
+        scene.add(car);
+
+        // Set initial camera position
+        camera.position.z = 5;
+
+        // Handle keyboard controls
+        const keyState = {};
+        window.addEventListener('keydown', (e) => keyState[e.code] = true);
+        window.addEventListener('keyup', (e) => keyState[e.code] = false);
+
+        // Animate the scene
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Update car position based on keyboard controls
+            if (keyState['ArrowUp']) {
+                car.position.z -= 0.1;
+            }
+            if (keyState['ArrowDown']) {
+                car.position.z += 0.1;
+            }
+            if (keyState['ArrowLeft']) {
+                car.rotation.y += 0.05;
+            }
+            if (keyState['ArrowRight']) {
+                car.rotation.y -= 0.05;
+            }
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+    </script>
+</body>
+</html>

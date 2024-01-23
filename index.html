@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>My first three.js app</title>
+		<style>
+			body { margin: 0; }
+		</style>
+	</head>
+	<body>
+		<!-- <script type="x-shader/x-vertex" id="vertexShader">
+			void main() {
+				gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+			}
+		</script>
+		
+		<script type="x-shader/x-fragment" id="fragmentShader">
+			uniform float time;
+			uniform vec2 resolution;
+		
+			void main() {
+				vec2 uv = (gl_FragCoord.xy - 0.5 * resolution.xy) / min(resolution.y, resolution.x);
+				float d = length(uv);
+				vec3 color = vec3(0.0);
+				if (d > 0.3 && d < 0.4) {
+					color = vec3(0.0, 1.0, 0.0);
+				}
+				gl_FragColor = vec4(color, 1.0);
+			}
+		</script> -->
+		
+		<!-- <script src="https://threejs.org/build/three.js"></script> -->
+		<script type="module" src="src/planet2.js"></script>		
+	</body>
+</html>
